@@ -14,14 +14,21 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  background-color: #262626;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  height: 4vh;
+}
+
+.App-main-window {
+  background-color: #121211;
+  height: 100vh;
+  color: white;
+  padding: 1vh;
+  overflow-y: scroll;
 }
 
 .App-link {
@@ -35,4 +42,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Navigation-area {
+  text-align: right;
+  /*line-height: ;*/
+  width: 50%;
+}
+
+.Title-area {
+  text-align: left;
+  /*line-height: ;*/
+  width: 50%;
+}
+
+.Title-bar {
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+  padding-left: 1%;
+  padding-right: 1%;
 }
