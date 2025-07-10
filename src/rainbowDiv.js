@@ -12,9 +12,9 @@ export default function RainbowDiv() {
             .rainbow-div {
                 height: 100%;
                 width: 100%;
-                background: linear-gradient(45deg, #ff0000, #0000ff, #00ff00);
+                background: linear-gradient(45deg, #a305f7, #00ff00, #a305f7);
                 background-size: 300% 300%;
-                animation: gradientAnimation 3s ease-in-out infinite;
+                animation: gradientAnimation 5s ease-in-out infinite;
             }
             `}
         </style>

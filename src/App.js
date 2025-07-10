@@ -7,13 +7,19 @@ function App() {
       <header className="App-header">
         <div style={{ height: "10%"}}><RainbowDiv></RainbowDiv></div>
         <div className="Title-bar">
-          <div className='Title-area'>Fate Hardin's WIP Portfolio: Last Updated July 8, 2025</div>
-          <div className="Navigation-area">Navigation Menu Coming Soon</div>
+          <div className='Title-area'>Fate's Portfolio</div>
+          <div className="Navigation-area">
+            <button className="Navigation-button">About Me</button>
+            <button className="Navigation-button">Projects</button>
+            <button className="Navigation-button">Contact</button>
+          </div>
         </div>
         <div style={{ height: "10%"}}><RainbowDiv></RainbowDiv></div>
       </header>
-      <div className="App-main-window">
-        Project Details coming soon. This site is a work in progress.
+      <div className='App-background-window'>
+        <div className="App-main-window">
+          Project Details coming soon. This site is a work in progress.
+        </div>
       </div>
     </div>
   );

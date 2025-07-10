@@ -15,20 +15,33 @@
 
 .App-header {
   background-color: #262626;
-  font-size: calc(5px + 2vmin);
   color: white;
-  position: sticky;
   width: 100%;
   top: 0;
   height: 4vh;
+  min-height: 20px;
 }
 
 .App-main-window {
   background-color: #121211;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   color: white;
-  padding: 1vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
   overflow-y: scroll;
+}
+
+.App-background-window {
+  background-image: url('../images/stars.png');
+  display: flex;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  height: 94vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-link {
@@ -46,14 +59,34 @@
 
 .Navigation-area {
   text-align: right;
-  /*line-height: ;*/
+  align-items: center;
+  justify-content: right;
   width: 50%;
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+}
+
+.Navigation-button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: white;
+  font-size: max(8px, 3vmin);
+  min-width: 50px;
+  min-height: 8px;
+}
+
+.Navigation-button:hover {
+  color: grey;
 }
 
 .Title-area {
+  display: flex;
   text-align: left;
-  /*line-height: ;*/
+  align-items: center;
   width: 50%;
+  font-size: max(10px, 3vmin)
 }
 
 .Title-bar {
