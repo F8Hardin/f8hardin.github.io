@@ -116,8 +116,9 @@
 }
 
 .Introduction-section {
+  display: flex;
+  flex-direction: column;
   color: white;
-  background-color: #000000D9;
-  height: 50vh;
+  background: radial-gradient(ellipse, #1b002a 0%, #00000000 50%);
   width: 100%;
 }

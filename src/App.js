@@ -1,3 +1,4 @@
+import Stars from './Planets/index';
 import './App.css';
 import RainbowDiv from './rainbowDiv';
 
@@ -30,6 +31,10 @@ function App() {
       </header>
       <div className='App-background-window'>
         <div className="Introduction-section">
+          Welcome to Fate Hardin's portfolio.
+          <div className="Planet-model">
+            <Stars/>
+          </div>
         </div>
         <div className="Navigation-section">
           <div id="AboutMe" className="Navigable-window" >

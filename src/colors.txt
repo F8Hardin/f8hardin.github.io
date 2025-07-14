@@ -1,0 +1,3 @@
+purple = a305f7
+darkPurple = 4c0075
+green = 00ff00
