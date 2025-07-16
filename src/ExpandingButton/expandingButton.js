@@ -10,16 +10,18 @@ export default function ExpandingButton({header, children}) {
 
     return (
         <>
-        <div className="expandingButton-div">
-            <img onClick={ExpandOnClick} src='/images/expand_icon.png' alt="+" className="expand-icon"></img>
-            {header}
-        </div>
-
-        { expanded && (
-            <div className='expanding-div'>
-                {children}
+        <div className="parentDiv">
+            <div className="expandingButton-div">
+                <img onClick={ExpandOnClick} src='/images/expand_icon.png' alt="+" className="expand-icon"></img>
+                {header}
             </div>
-        )}
+
+            { expanded && (
+                <div className='expanding-div'>
+                    {children}
+                </div>
+            )}
+        </div>
         </>
     );
 }

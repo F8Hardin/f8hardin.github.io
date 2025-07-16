@@ -1,7 +1,5 @@
 .expandingButton-div {
     background-color: white;
-    border: 5px solid;
-    border-color: black;
     width: 100%;
     height: max(40px, 4vmin);
     color: black;
@@ -13,7 +11,7 @@
 }
 
 .expand-icon {
-    height: 90%;
+    height: 80%;
     border: 1px solid black;
 }
 
@@ -22,7 +20,12 @@
 }
 
 .expanding-div {
-    height: 100px;
     width: 100%;
     background-color: black;
+    border: 2px solid green;
+}
+
+.parentDiv {
+    display: flex;
+    flex-direction: column;
 }
