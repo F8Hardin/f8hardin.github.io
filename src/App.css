@@ -25,7 +25,7 @@
 }
 
 .App-background-window {
-  background-image: url('../images/stars.png');
+  background-image: url('../public/images/stars.png');
   display: flex;
   flex-direction: column;
   padding-top: 2vh;
