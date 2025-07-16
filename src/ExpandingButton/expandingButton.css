@@ -1,0 +1,28 @@
+.expandingButton-div {
+    background-color: white;
+    border: 5px solid;
+    border-color: black;
+    width: 100%;
+    height: max(40px, 4vmin);
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.expand-icon {
+    height: 90%;
+    border: 1px solid black;
+}
+
+.expand-icon:hover {
+    border: 2px solid black;
+}
+
+.expanding-div {
+    height: 100px;
+    width: 100%;
+    background-color: black;
+}

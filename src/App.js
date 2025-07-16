@@ -1,6 +1,7 @@
 import Stars from './Planets/index';
 import './App.css';
 import RainbowDiv from './rainbowDiv';
+import ExpandingButton from './ExpandingButton/expandingButton';
 
 function App() {
 
@@ -41,7 +42,15 @@ function App() {
             About Me.
           </div>
           <div id="Projects" className="Navigable-window" >
-            Projects
+            <ExpandingButton header={"Personal Software Projects"}>
+              List coming soon.
+            </ExpandingButton>
+            <ExpandingButton header={"Music Projects"}>
+              List coming soon.
+            </ExpandingButton>
+            <ExpandingButton header={"Professional Software Projects"}>
+              List coming soon.
+            </ExpandingButton>
           </div>
           <div id="Contact" className="Navigable-window" >
             Contact
