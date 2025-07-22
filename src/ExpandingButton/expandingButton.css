@@ -1,8 +1,8 @@
 .expandingButton-div {
-    background-color: white;
+    background-color: #262626;
     width: 100%;
     height: max(40px, 4vmin);
-    color: black;
+    color: white;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -10,16 +10,17 @@
     padding-right: 2px;
     box-sizing: border-box;
     border: 2px solid black;
+    gap: 10px;
 }
 
 .expand-icon {
     height: 80%;
-    border: 1px solid black;
+    border: 1px solid white;
     box-sizing: border-box;
 }
 
 .expand-icon:hover {
-    border: 2px solid black;
+    border: 2px solid white;
 }
 
 .expanding-div {
