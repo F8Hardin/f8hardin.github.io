@@ -8,11 +8,13 @@
     align-items: center;
     padding-left: 2px;
     padding-right: 2px;
+    box-sizing: border-box;
 }
 
 .expand-icon {
     height: 80%;
     border: 1px solid black;
+    box-sizing: border-box;
 }
 
 .expand-icon:hover {
@@ -23,6 +25,7 @@
     width: 100%;
     background-color: black;
     border: 2px solid green;
+    box-sizing: border-box;
 }
 
 .parentDiv {
