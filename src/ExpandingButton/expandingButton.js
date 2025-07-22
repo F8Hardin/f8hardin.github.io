@@ -12,7 +12,7 @@ export default function ExpandingButton({header, children}) {
         <>
         <div className="parentDiv">
             <div className="expandingButton-div">
-                <img onClick={ExpandOnClick} src='/images/expand_icon.png' alt="+" className="expand-icon"></img>
+                <img onClick={ExpandOnClick} src='/images/expand_icon_white.png' alt="+" className="expand-icon"></img>
                 {header}
             </div>
 
