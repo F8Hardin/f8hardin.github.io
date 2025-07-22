@@ -2,8 +2,11 @@ import Stars from './Planets/index';
 import './App.css';
 import RainbowDiv from './rainbowDiv';
 import ExpandingButton from './ExpandingButton/expandingButton';
+import content from "./content.json"
 
 function App() {
+  const contactInfo = content.contactInfo;
+  const projects = content.projects;
 
   function scrollToSection(sectionId) {
     const el = document.getElementById(sectionId);
@@ -43,17 +46,23 @@ function App() {
           </div>
           <div id="Projects" className="Navigable-window" >
             <ExpandingButton header={"Personal Software Projects"}>
-              List coming soon.
-            </ExpandingButton>
-            <ExpandingButton header={"Music Projects"}>
-              List coming soon.
+              {
+                projects.personalProjects.map((project) => {
+                  return(
+                    <div className="Horizontal-div">
+                      <div style={{width : "1%"}}></div>
+                      <div style={{width : "99%"}}><ExpandingButton header={project.name}>Details coming soon.</ExpandingButton></div>
+                    </div>
+                  )
+                })
+              }
             </ExpandingButton>
             <ExpandingButton header={"Professional Software Projects"}>
               List coming soon.
             </ExpandingButton>
           </div>
           <div id="Contact" className="Navigable-window" >
-            Contact
+            {contactInfo.email}
           </div>
         </div>
       </div>

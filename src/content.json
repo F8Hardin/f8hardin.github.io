@@ -1,0 +1,23 @@
+{
+    "contactInfo" : {
+        "email" : "laf8hardin@gmail.com"
+    },
+    "projects" : {
+        "personalProjects" : [
+            {
+                "name" : "Email AI Assistant"
+            },
+            {
+                "name" : "Video To Notes Workflow"
+            }
+        ],
+        "professionalProjects" : [
+            {
+                "name" : "Magic Leap Omniverse AR Plugin"
+            },
+            {
+                "name" : "Ultimate Medical Academy: Bias In Recruiting"
+            }
+        ]
+    }
+}

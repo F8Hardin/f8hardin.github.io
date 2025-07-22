@@ -9,6 +9,7 @@
     padding-left: 2px;
     padding-right: 2px;
     box-sizing: border-box;
+    border: 2px solid black;
 }
 
 .expand-icon {
@@ -24,8 +25,9 @@
 .expanding-div {
     width: 100%;
     background-color: black;
-    border: 2px solid green;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 .parentDiv {

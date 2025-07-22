@@ -81,7 +81,6 @@
   border-color: #FFFFFF40;
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .Navigation-section {
@@ -125,4 +124,9 @@
   color: white;
   background: radial-gradient(ellipse, #1b002a 0%, #00000000 50%);
   width: 100%;
+}
+
+.Horizontal-div {
+  display: flex;
+  flex-direction: row;
 }
