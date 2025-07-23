@@ -7,6 +7,8 @@ import content from "./content.json"
 function App() {
   const contactInfo = content.contactInfo;
   const projects = content.projects;
+  const aboutMe = content.aboutMe;
+  const intro = content.intro;
 
   function scrollToSection(sectionId) {
     const el = document.getElementById(sectionId);
@@ -35,14 +37,12 @@ function App() {
       </header>
       <div className='App-background-window'>
         <div className="Introduction-section">
-          Welcome to Fate Hardin's portfolio.
-          <div className="Planet-model">
-            <Stars/>
-          </div>
+          <div className='Intro-text'>{intro}</div>
+          <div className="Planet-model"><Stars/></div>
         </div>
         <div className="Navigation-section">
           <div id="AboutMe" className="Navigable-window" >
-            About Me.
+            {aboutMe}
           </div>
           <div id="Projects" className="Navigable-window" >
             <ExpandingButton header={"Personal Projects"}>
