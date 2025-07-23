@@ -1,6 +1,7 @@
 {
     "contactInfo" : {
-        "email" : "laf8hardin@gmail.com"
+        "email" : "laf8hardin@gmail.com",
+        "github" : "https://github.com/F8Hardin"
     },
     "projects" : {
         "personalProjects" : [
@@ -9,6 +10,18 @@
             },
             {
                 "name" : "Video To Notes Workflow"
+            },
+            {
+                "name" : "Hand to Mouse Controls"
+            },
+            {
+                "name" : "Personal Ubuntu Server"
+            },
+            {
+                "name" : "T-Rex Reinforcement Learning"
+            },
+            {
+                "name" : "Project Zero G"
             }
         ],
         "professionalProjects" : [
@@ -17,6 +30,13 @@
             },
             {
                 "name" : "Ultimate Medical Academy: Bias In Recruiting"
+            },
+            {
+                "name" : "DOD Experience",
+                "relatedURLs" : ["https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/brightline-interactive-enters-into-a-4-million-contract-with-a-dep-862785"]
+            },
+            {
+                "name" : "IVXHealth"
             }
         ]
     }

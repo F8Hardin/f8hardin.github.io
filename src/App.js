@@ -58,11 +58,21 @@ function App() {
               }
             </ExpandingButton>
             <ExpandingButton header={"Professional Software Projects"}>
-              List coming soon.
+              {
+                projects.professionalProjects.map((project) => {
+                  return(
+                    <div className="Horizontal-div">
+                      <div style={{width : "1%"}}></div>
+                      <div style={{width : "99%"}}><ExpandingButton header={project.name}>Details coming soon.</ExpandingButton></div>
+                    </div>
+                  )
+                })
+              }
             </ExpandingButton>
           </div>
           <div id="Contact" className="Navigable-window" >
-            {contactInfo.email}
+            <div>Email: {contactInfo.email}</div>
+            <div>Github: <a href="https://github.com/F8Hardin">F8Hardin</a></div>
           </div>
         </div>
       </div>

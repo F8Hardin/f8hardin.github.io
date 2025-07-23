@@ -79,8 +79,19 @@
   padding: 1.5vh;
   border: 2px solid;
   border-color: #7700c640;
+}
+
+#Projects {
   display: flex;
   flex-direction: column;
+}
+
+#Contact {
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+  align-items: center;
+  justify-content: center;
 }
 
 .Navigation-section {
