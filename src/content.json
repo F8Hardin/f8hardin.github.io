@@ -1,6 +1,6 @@
 {
     "intro" : "Welcome to Fate Hardin's Portfolio.",
-    "aboutMe" : "I was born on May 11, 1998 and am currently spending my time learning guitar, yoyo-ing, and staying up to date in the world of technology. I enjoy reading and talking about astrophysics, music, philosphy, and video games.",
+    "aboutMe" : "I was born on May 11, 1998 and am currently spending my time learning guitar, yoyo-ing, and staying up to date in the world of technology. I enjoy reading and talking about astrophysics, music, philosophy, and video games. \n\nSince I was young I have always had an interest in science. My parents being teachers, I was learning from a young age about the beauty and complexity of the universe. This encouraged my interest in astrophysics and math, our ways of understanding our reality that make up that universe. \n\nIn college I majored in computer science, earning a Bachelor's of Science. There, I got my first experience programming and enjoyed participating in the International Collegiate Programming Contest. Since then, I have been working on software projects that build my development expertise to higher levels. \n\nIn addition to programming, I spend my days practicing my guitar chops and working on my yoyo skills - two hobbies I never see going away.",
     "contactInfo" : {
         "email" : "laf8hardin@gmail.com",
         "github" : "https://github.com/F8Hardin"
@@ -18,17 +18,12 @@
             },
             {
                 "name" : "Personal Ubuntu Server"
-            },
-            {
-                "name" : "T-Rex Reinforcement Learning"
-            },
-            {
-                "name" : "Project Zero G"
             }
         ],
         "professionalProjects" : [
             {
-                "name" : "Magic Leap Omniverse AR Plugin"
+                "name" : "Magic Leap Omniverse AR Plugin",
+                "relatedURLs" : "https://developer-docs.magicleap.cloud/docs/guides/remote-rendering/Applications/Omniverse/omniverse-setup/"
             },
             {
                 "name" : "Ultimate Medical Academy: Bias In Recruiting"
