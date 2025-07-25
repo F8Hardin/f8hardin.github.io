@@ -19,9 +19,10 @@
   width: 100%;
   top: 0;
   height: 4vh;
-  min-height: max(30px, 2.5vh);
-  max-height: max(40px, 3vh);
+  min-height: max(30px, 2vh);
+  max-height: 2.5vh;
   position: sticky;
+  z-index: 1000;
 }
 
 .App-background-window {
@@ -36,6 +37,7 @@
   align-items: center;
   min-height: 100vh;
   gap: 2vh;
+  z-index: 0;
 }
 
 .App-link {
@@ -66,7 +68,7 @@
   outline: none;
   border: none;
   color: white;
-  font-size: max(11px, 1.5vmin);
+  font-size: max(11px, 1.25vmin);
   min-width: 50px;
   min-height: 8px;
 }
@@ -118,15 +120,15 @@
   text-align: left;
   align-items: center;
   width: 50%;
-  font-size: max(15px, 2vmin)
+  font-size: max(15px, 1.75vmin)
 }
 
 .Title-bar {
   display: flex;
   flex-direction: row;
   height: 80%;
-  padding-left: 1%;
-  padding-right: 1%;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 .Introduction-section {

@@ -45,7 +45,7 @@ function App() {
             {aboutMe}
           </div>
           <div id="Projects" className="Navigable-window" >
-            <ExpandingButton header={"Personal Projects"}>
+            <ExpandingButton header={"Personal Projects"} startExpanded = {true}>
               {
                 projects.personalProjects.map((project) => {
                   return(
@@ -57,7 +57,7 @@ function App() {
                 })
               }
             </ExpandingButton>
-            <ExpandingButton header={"Professional Projects"}>
+            <ExpandingButton header={"Professional Projects"}  startExpanded = {true}>
               {
                 projects.professionalProjects.map((project) => {
                   return(
