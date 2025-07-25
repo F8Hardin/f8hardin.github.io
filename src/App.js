@@ -50,25 +50,25 @@ function App() {
             ))}
           </div>
           <div id="Projects" className="Navigable-window" >
-            <ExpandingButton header={"Personal Projects"} startExpanded = {true}>
-              {
-                projects.personalProjects.map((project) => {
-                  return(
-                    <div className="Horizontal-div">
-                      <div style={{width : "1%"}}></div>
-                      <div style={{width : "99%"}}><ExpandingButton header={project.name}>Details coming soon.</ExpandingButton></div>
-                    </div>
-                  )
-                })
-              }
-            </ExpandingButton>
             <ExpandingButton header={"Professional Projects"}  startExpanded = {true}>
               {
                 projects.professionalProjects.map((project) => {
                   return(
                     <div className="Horizontal-div">
-                      <div style={{width : "1%"}}></div>
-                      <div style={{width : "99%"}}><ExpandingButton header={project.name}>Details coming soon.</ExpandingButton></div>
+                      <div style={{width : "1.25%"}}></div>
+                      <div style={{width : "98.75%"}}><ExpandingButton header={project.name}>Details coming soon.</ExpandingButton></div>
+                    </div>
+                  )
+                })
+              }
+            </ExpandingButton>
+            <ExpandingButton header={"Personal Projects"} startExpanded = {true}>
+              {
+                projects.personalProjects.map((project) => {
+                  return(
+                    <div className="Horizontal-div">
+                      <div style={{width : "1.25%"}}></div>
+                      <div style={{width : "98.75%"}}><ExpandingButton header={project.name}>Details coming soon.</ExpandingButton></div>
                     </div>
                   )
                 })
