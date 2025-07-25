@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './expandingButton.css'
 
-export default function ExpandingButton({header, children}) {
-    const [expanded, setExpanded] = useState(false);
+export default function ExpandingButton({header, children, startExpanded = false}) {
+    const [expanded, setExpanded] = useState(startExpanded);
 
     function ExpandOnClick() {
         setExpanded(!expanded)
