@@ -83,6 +83,10 @@
   border-color: #7700c640;
 }
 
+#AboutMe {
+  font-size: max(1.5vh, 15px);
+}
+
 #Projects {
   display: flex;
   flex-direction: column;

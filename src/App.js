@@ -42,7 +42,12 @@ function App() {
         </div>
         <div className="Navigation-section">
           <div id="AboutMe" className="Navigable-window" >
-            {aboutMe}
+            {aboutMe.split("\n").map((line, idx) => (
+              <span key={idx}>
+                {line}
+                <br />
+              </span>
+            ))}
           </div>
           <div id="Projects" className="Navigable-window" >
             <ExpandingButton header={"Personal Projects"} startExpanded = {true}>
