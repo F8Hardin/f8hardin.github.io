@@ -11,6 +11,7 @@
     box-sizing: border-box;
     border: 2px solid black;
     gap: 10px;
+    font-size: 1.25vh;
 }
 
 .expand-icon {
