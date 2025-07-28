@@ -1,8 +1,8 @@
-import Stars from './Planets/index';
 import './App.css';
 import RainbowDiv from './rainbowDiv';
 import ExpandingButton from './ExpandingButton/expandingButton';
 import content from "./content.json"
+import StarSystem from './Planets/index';
 
 function App() {
   const contactInfo = content.contactInfo;
@@ -38,7 +38,7 @@ function App() {
       <div className='App-background-window'>
         <div className="Introduction-section">
           <div className='Intro-text'>{intro}</div>
-          <div className="Planet-model"><Stars/></div>
+          <div className="Planet-model"><StarSystem/></div>
         </div>
         <div className="Navigation-section">
           <div id="AboutMe" className="Navigable-window" >
