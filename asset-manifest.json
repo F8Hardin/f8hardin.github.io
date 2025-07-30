@@ -1,16 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.61f24eca.css",
-    "main.js": "/static/js/main.fe320c2d.js",
+    "main.css": "/static/css/main.c2bd602b.css",
+    "main.js": "/static/js/main.06d85b3c.js",
     "static/js/453.ad7768ec.chunk.js": "/static/js/453.ad7768ec.chunk.js",
+    "static/media/HussarBoldWeb-bf92.woff": "/static/media/HussarBoldWeb-bf92.faaad004d3fec9f6b77c.woff",
     "static/media/stars.png": "/static/media/stars.16ef28735e7e129c9ffd.png",
+    "static/media/AnkhSanctuary-PVK0B.ttf": "/static/media/AnkhSanctuary-PVK0B.14b8d3aaa658b8f9ff7a.ttf",
+    "static/media/favicon.ico": "/static/media/favicon.4bc3270a1aa544a6edde.ico",
     "index.html": "/index.html",
-    "main.61f24eca.css.map": "/static/css/main.61f24eca.css.map",
-    "main.fe320c2d.js.map": "/static/js/main.fe320c2d.js.map",
+    "main.c2bd602b.css.map": "/static/css/main.c2bd602b.css.map",
+    "main.06d85b3c.js.map": "/static/js/main.06d85b3c.js.map",
     "453.ad7768ec.chunk.js.map": "/static/js/453.ad7768ec.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.61f24eca.css",
-    "static/js/main.fe320c2d.js"
+    "static/css/main.c2bd602b.css",
+    "static/js/main.06d85b3c.js"
   ]
 }
