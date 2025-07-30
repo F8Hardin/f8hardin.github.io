@@ -189,3 +189,11 @@
   background-repeat: no-repeat;
   display: block;
 }
+
+.ProjectLinksSection {
+  background-color: transparent;
+}
+
+.ProjectLink {
+  color: #00ff00;
+}

@@ -23,14 +23,18 @@
         "professionalProjects" : [
             {
                 "name" : "Magic Leap Omniverse AR Plugin",
-                "relatedURLs" : "https://developer-docs.magicleap.cloud/docs/guides/remote-rendering/Applications/Omniverse/omniverse-setup/"
+                "relatedURLs" : {
+                    "Magic Leap Documentation" : "https://developer-docs.magicleap.cloud/docs/guides/remote-rendering/Applications/Omniverse/omniverse-setup/"
+                }
             },
             {
                 "name" : "Ultimate Medical Academy: Bias In Recruiting"
             },
             {
                 "name" : "DOD Experience",
-                "relatedURLs" : ["https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/brightline-interactive-enters-into-a-4-million-contract-with-a-dep-862785"]
+                "relatedURLs" : {
+                    "Related News Article" : "https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/brightline-interactive-enters-into-a-4-million-contract-with-a-dep-862785"
+                }
             },
             {
                 "name" : "IVXHealth"

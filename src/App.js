@@ -57,9 +57,24 @@ function App() {
               {
                 projects.professionalProjects.map((project) => {
                   return(
-                    <div className="Horizontal-div">
+                    <div key={project.name} className="Horizontal-div">
                       <div style={{width : "1.25%"}}></div>
-                      <div style={{width : "98.75%"}}><ExpandingButton header={project.name}>Details coming soon.</ExpandingButton></div>
+                      <div style={{width : "98.75%"}}>
+                        <ExpandingButton header={project.name}>
+                          More details coming soon.
+                          <div className='ProjectLinksSection'>
+                            {
+                              project.relatedURLs 
+                                ? Object.keys(project.relatedURLs).map((key, index) => (
+                                    <a className="ProjectLink" target="_blank" rel="noopener noreferrer" href={project.relatedURLs[key]} key={key}>
+                                      {key}
+                                    </a>
+                                  ))
+                                : null
+                            }
+                          </div>
+                        </ExpandingButton>
+                      </div>
                     </div>
                   )
                 })
@@ -69,9 +84,24 @@ function App() {
               {
                 projects.personalProjects.map((project) => {
                   return(
-                    <div className="Horizontal-div">
+                    <div key={project.name} className="Horizontal-div">
                       <div style={{width : "1.25%"}}></div>
-                      <div style={{width : "98.75%"}}><ExpandingButton header={project.name}>Details coming soon.</ExpandingButton></div>
+                      <div style={{width : "98.75%"}}>
+                        <ExpandingButton header={project.name}>
+                          More details coming soon.
+                          <div className='ProjectLinksSection'>
+                            {
+                              project.relatedURLs 
+                                ? Object.keys(project.relatedURLs).map((key, index) => (
+                                    <a className="ProjectLink" target="_blank" rel="noopener noreferrer" href={project.relatedURLs[key]} key={key}>
+                                      {key}
+                                    </a>
+                                  ))
+                                : null
+                            }
+                          </div>
+                        </ExpandingButton>
+                      </div>
                     </div>
                   )
                 })

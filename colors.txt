@@ -3,3 +3,4 @@ darkPurple = 4c0075
 darkTransparentPurple = 7700c640
 green = 00ff00
 grey = 262626
+darkGrey = 0d0d0d
