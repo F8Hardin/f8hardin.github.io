@@ -13,14 +13,23 @@
   }
 }
 
+@font-face {
+  font-family: 'HussarBoldWeb-bf92';
+  src: local('HussarBoldWeb-bf92'), url('./fonts/HussarBoldWeb-bf92.woff') format('woff'); /* Adjust path and format */
+}
+
+@font-face {
+  font-family: 'AnkhSanctuary-PVK0B';
+  src: local('AnkhSanctuary-PVK0B'), url('./fonts/AnkhSanctuary-PVK0B.ttf') format('truetype');
+}
+
 .App-header {
   background-color: #262626;
   color: white;
   width: 100%;
   top: 0;
-  height: 4vh;
-  min-height: max(30px, 2vh);
-  max-height: 2.5vh;
+  height: 2.5vh;
+  min-height: 30px;
   position: sticky;
   z-index: 1000;
 }
@@ -68,9 +77,11 @@
   outline: none;
   border: none;
   color: white;
-  font-size: max(11px, 1.25vmin);
+  font-size: max(10px, 1.25vmin);
   min-width: 50px;
   min-height: 8px;
+  font-family: 'HussarBoldWeb-bf92';
+  padding-top: 5px;
 }
 
 .Navigation-button:hover {
@@ -124,7 +135,8 @@
   text-align: left;
   align-items: center;
   width: 50%;
-  font-size: max(15px, 1.75vmin)
+  font-size: max(18px, 2cqh);
+  font-family: 'AnkhSanctuary-PVK0B';
 }
 
 .Title-bar {
@@ -151,6 +163,8 @@
   grid-column: 1;
   grid-row: 1;
   z-index: 2;
+  font-size: max(2vw, 25px);
+  font-family: 'HussarBoldWeb-bf92';
 }
 
 .Planet-model {
@@ -164,4 +178,14 @@
 .Horizontal-div {
   display: flex;
   flex-direction: row;
+}
+
+.Icon {
+  background-image: url('../public/favicon.ico');
+  background-size: contain;
+  height: 80%;
+  width: auto;
+  aspect-ratio: 1/1;
+  background-repeat: no-repeat;
+  display: block;
 }

@@ -22,7 +22,10 @@ function App() {
       <header className="App-header">
         <div style={{ height: "10%"}}><RainbowDiv></RainbowDiv></div>
         <div className="Title-bar">
-          <div className='Title-area'>Fate's Portfolio</div>
+          <div className='Title-area'>
+            <div className='Icon'/>
+            F8
+          </div>
           <div className="Navigation-button-area">
             <div className="Vertical-line"></div>
             <button onClick={() => scrollToSection('AboutMe')} className="Navigation-button">About Me</button>
