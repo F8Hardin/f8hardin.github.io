@@ -35,7 +35,7 @@
 }
 
 .App-background-window {
-  background-image: url('../public/images/stars.png');
+  background-color: black;
   display: flex;
   flex-direction: column;
   padding-top: 2vh;

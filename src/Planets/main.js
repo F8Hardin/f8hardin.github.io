@@ -2,8 +2,8 @@ import * as THREE from 'three';
 import PhysicsBody from './Bodies/physicsBody.js'
 import Star from './Bodies/star'
 
-let scene, camera, renderer, sun, planet;
-let planetBounceHeight = 5;
+let scene, camera, renderer, sun, planet, moon;
+let planetBounceHeight = 3;
 let planetBounceDelta = .01;
 
 function init() {
@@ -20,7 +20,9 @@ function init() {
   sun = new Star({position : [0, 0, 0],  geometry : new THREE.SphereGeometry(3, 32, 16), pointLight : new THREE.PointLight("#f2df07", 1000, 0),  material : new THREE.MeshStandardMaterial({color : "#f2df07"}), ambientLight : new THREE.AmbientLight(0xffffff, 1)});
 
   planet = new PhysicsBody({position : [10, 0, 0],  geometry : new THREE.SphereGeometry(1, 32, 16),  material : new THREE.MeshStandardMaterial({color : "#2d7af7"})});
+  moon = new PhysicsBody({position : [3, 0, 5],  geometry : new THREE.SphereGeometry(.5, 32, 16),  material : new THREE.MeshStandardMaterial({color : "#871900"})});
   sun.group.add(planet)
+  sun.group.add(moon);
   scene.add(sun.group);
 
   resize();
@@ -35,6 +37,7 @@ function animate() {
     delta = planetBounceDelta;
   }
   planet.position.set(planet.position.x, planet.position.y + delta, planet.position.z)
+  moon.position.set(moon.position.x, moon.position.y + delta, moon.position.z)
   renderer.render( scene, camera );
 }
 
