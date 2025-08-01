@@ -61,7 +61,9 @@ function App() {
                       <div style={{width : "1.25%"}}></div>
                       <div style={{width : "98.75%"}}>
                         <ExpandingButton header={project.name}>
-                          More details coming soon.
+                          <div className="ProjectDescSection">
+                            {project.description}
+                          </div>
                           <div className='ProjectLinksSection'>
                             {
                               project.relatedURLs 
@@ -88,7 +90,7 @@ function App() {
                       <div style={{width : "1.25%"}}></div>
                       <div style={{width : "98.75%"}}>
                         <ExpandingButton header={project.name}>
-                          More details coming soon.
+                          <div className="ProjectDescSection">{project.description}</div>
                           <div className='ProjectLinksSection'>
                             {
                               project.relatedURLs 
