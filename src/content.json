@@ -9,30 +9,30 @@
         "personalProjects" : [
             {
                 "name" : "Email AI Assistant",
-                "description" : "More details coming soon.",
-                "stack" : ""
+                "description" : "I built an electron application that uses a LangChain agent with OpenAI and custom defined tools to interact with my personal email. With this application, the agent can read my emails, classify them, summarize them, as well as find important information from the available emails. In the future, I would improve the functionality my integrating a vector database for email storage and retrieval, as well as support for many users.",
+                "stack" : "OpenAI, Langchain, Electron JS, Socket IO"
             },
             {
                 "name" : "Video To Notes Workflow",
-                "description" : "More details coming soon.",
-                "stack" : ""
+                "description" : "This project involved building a react front end messaging system that allowed a user to send a public youtube playlist URL to the backend and receive back notes about the videos in the playlist.",
+                "stack" : "LM Studio with LLama 3.1, React JS, Socket IO, Whisper C++, FFMPEG"
             },
             {
                 "name" : "Hand to Mouse Controls",
                 "description" : "More details coming soon.",
-                "stack" : ""
+                "stack" : "Python, OpenCV, MediaPipe, Tensorflow, PyAutoGUI"
             },
             {
                 "name" : "Personal Ubuntu Server",
-                "description" : "More details coming soon.",
-                "stack" : ""
+                "description" : "A personal home server to act as a personal cloud drive and media storage center.",
+                "stack" : "Wireguard, Jellyfin, Samba"
             }
         ],
         "professionalProjects" : [
             {
                 "name" : "Magic Leap Omniverse AR Plugin",
                 "description" : "This project involved developing a custom extension for NVidia Omniverse. This extension enabled world building with the use of the Magic Leap AR Headset, allowing the user to build and view 3D assets in the HMD via remote rendering.",
-                "stack" : "",
+                "stack" : "NVidia Omniverse, Python, MagicLeap 2",
                 "relatedURLs" : {
                     "Magic Leap Documentation" : "https://developer-docs.magicleap.cloud/docs/guides/remote-rendering/Applications/Omniverse/omniverse-setup/"
                 }
@@ -40,12 +40,12 @@
             {
                 "name" : "Ultimate Medical Academy: Bias In Recruiting",
                 "description" : "More details coming soon.",
-                "stack" : ""
+                "stack" : "Unreal Engine 4, Meta Quest, AWS Gamelift, AWS Cognito"
             },
             {
                 "name" : "DOD Experience",
                 "description" : "More details coming soon.",
-                "stack" : "",
+                "stack" : "React JS, Unreal Engine 5, AWS EC2, HTC XR Elite",
                 "relatedURLs" : {
                     "Related News Article" : "https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/brightline-interactive-enters-into-a-4-million-contract-with-a-dep-862785"
                 }
@@ -53,7 +53,7 @@
             {
                 "name" : "IVXHealth",
                 "description" : "More details coming soon.",
-                "stack" : ""
+                "stack" : "Unreal Engine 4, Meta Quest"
             }
         ]
     }
