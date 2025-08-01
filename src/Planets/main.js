@@ -2,9 +2,11 @@ import * as THREE from 'three';
 import PhysicsBody from './Bodies/physicsBody.js'
 import Star from './Bodies/star'
 
-let scene, camera, renderer, sun, planet, moon;
-let planetBounceHeight = 3;
-let planetBounceDelta = .01;
+let scene, camera, renderer, sun, earth, moon, mars, mercuryGroup, clock, marsGroup, earthGroup;
+let marsOrbitSpeed = 2 * Math.PI / 12;
+let earthRotateSpeed = 1 / 3 * Math.PI;
+let earthOrbitSpeed = 1 / 3 * Math.PI;
+let mercuryOrbitSpeed = Math.PI;
 
 function init() {
   scene = new THREE.Scene();
@@ -18,26 +20,42 @@ function init() {
   camera.position.z = 25;
 
   sun = new Star({position : [0, 0, 0],  geometry : new THREE.SphereGeometry(3, 32, 16), pointLight : new THREE.PointLight("#f2df07", 1000, 0),  material : new THREE.MeshStandardMaterial({color : "#f2df07"}), ambientLight : new THREE.AmbientLight(0xffffff, 1)});
+  earth = new PhysicsBody({position : [7, 0, 0],  geometry : new THREE.SphereGeometry(1, 32, 16),  material : new THREE.MeshStandardMaterial({color : "#2d7af7"})});
+  moon = new PhysicsBody({position : [2, 0, 0],  geometry : new THREE.SphereGeometry(.1, 32, 16),  material : new THREE.MeshStandardMaterial({color : "#a3a6a8"})});
+  earth.rotation.x = .041;
+  earth.add(moon);
+  earthGroup = new THREE.Group();
+  earthGroup.rotation.x = -1 * THREE.MathUtils.degToRad(10);
+  earthGroup.add(earth);
 
-  planet = new PhysicsBody({position : [10, 0, 0],  geometry : new THREE.SphereGeometry(1, 32, 16),  material : new THREE.MeshStandardMaterial({color : "#2d7af7"})});
-  moon = new PhysicsBody({position : [3, 0, 5],  geometry : new THREE.SphereGeometry(.5, 32, 16),  material : new THREE.MeshStandardMaterial({color : "#871900"})});
-  sun.group.add(planet)
-  sun.group.add(moon);
+  mars = new PhysicsBody({position : [10, 0, 0],  geometry : new THREE.SphereGeometry(.5, 32, 16),  material : new THREE.MeshStandardMaterial({color : "#871900"})});
+  marsGroup = new THREE.Group();
+  marsGroup.position.set(0, 0, 0);
+  marsGroup.rotation.x = THREE.MathUtils.degToRad(10);
+  marsGroup.add(mars);
+
+  let mercury = new PhysicsBody({position : [4, 0, 0],  geometry : new THREE.SphereGeometry(.2, 32, 16),  material : new THREE.MeshStandardMaterial({color : "#665754"})})
+  mercuryGroup = new THREE.Group();
+  mercuryGroup.add(mercury);
+  sun.group.add(mercuryGroup)
+
+  sun.group.add(marsGroup);
+  sun.group.add(earthGroup);
+  sun.group.rotation.x = THREE.MathUtils.degToRad(30);
+  scene.add(sun);
   scene.add(sun.group);
+
+  clock = new THREE.Clock(true);
 
   resize();
 }
 
 function animate() {
-  sun.group.rotation.set(0, sun.group.rotation.y + .01, 0);
-
-  let delta = planetBounceDelta;
-  if (planet.position.y > planetBounceHeight || planet.position.y < -1 * planetBounceHeight){
-    planetBounceDelta *= -1;
-    delta = planetBounceDelta;
-  }
-  planet.position.set(planet.position.x, planet.position.y + delta, planet.position.z)
-  moon.position.set(moon.position.x, moon.position.y + delta, moon.position.z)
+  let frameTime = clock.getDelta();
+  marsGroup.rotation.y += (marsOrbitSpeed * frameTime);
+  earthGroup.rotation.y += (earthOrbitSpeed * frameTime)
+  earth.rotation.y += (earthRotateSpeed * frameTime);
+  mercuryGroup.rotation.y += (mercuryOrbitSpeed * frameTime);
   renderer.render( scene, camera );
 }
 
