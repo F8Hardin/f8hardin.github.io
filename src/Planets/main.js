@@ -3,10 +3,11 @@ import PhysicsBody from './Bodies/physicsBody.js'
 import Star from './Bodies/star'
 
 let scene, camera, renderer, sun, earth, moon, mars, mercuryGroup, clock, marsGroup, earthGroup;
-let marsOrbitSpeed = 2 * Math.PI / 12;
+let marsOrbitSpeed = 1 / 8 *  Math.PI;
 let earthRotateSpeed = 1 / 3 * Math.PI;
 let earthOrbitSpeed = 1 / 3 * Math.PI;
-let mercuryOrbitSpeed = Math.PI;
+let mercuryOrbitSpeed = 1 / 10 * Math.PI;
+let sunRotationSpeed = 1 / 10 * Math.PI;
 
 function init() {
   scene = new THREE.Scene();
@@ -41,7 +42,6 @@ function init() {
 
   sun.group.add(marsGroup);
   sun.group.add(earthGroup);
-  sun.group.rotation.x = THREE.MathUtils.degToRad(30);
   scene.add(sun);
   scene.add(sun.group);
 
@@ -56,6 +56,7 @@ function animate() {
   earthGroup.rotation.y += (earthOrbitSpeed * frameTime)
   earth.rotation.y += (earthRotateSpeed * frameTime);
   mercuryGroup.rotation.y += (mercuryOrbitSpeed * frameTime);
+  sun.group.rotation.x += (sunRotationSpeed * frameTime);
   renderer.render( scene, camera );
 }
 
