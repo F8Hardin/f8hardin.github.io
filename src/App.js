@@ -13,7 +13,7 @@ function App() {
   function scrollToSection(sectionId) {
     const el = document.getElementById(sectionId);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }
 
@@ -58,17 +58,20 @@ function App() {
                 projects.professionalProjects.map((project) => {
                   return(
                     <div key={project.name} className="Horizontal-div">
-                      <div style={{width : "1.25%"}}></div>
-                      <div style={{width : "98.75%"}}>
+                      <div style={{width : "2%"}}></div>
+                      <div style={{width : "98%"}}>
                         <ExpandingButton header={project.name}>
                           <div className="ProjectDescSection">
-                            {project.description}
+                            <div className="ProjectAreaTitle">Description</div>
+                            <div className="ProjectDescText">{project.description}</div>              
                           </div>
+                          <hr className="ProjectSeparationLine"/>
                           <div className='ProjectLinksSection'>
+                            {project.relatedURLs && Object.keys(project.relatedURLs).length > 0 ? <div className='ProjectAreaTitle'>Related URLs: </div> : null}
                             {
                               project.relatedURLs 
                                 ? Object.keys(project.relatedURLs).map((key, index) => (
-                                    <a className="ProjectLink" target="_blank" rel="noopener noreferrer" href={project.relatedURLs[key]} key={key}>
+                                    <a className="Link" target="_blank" rel="noopener noreferrer" href={project.relatedURLs[key]} key={key}>
                                       {key}
                                     </a>
                                   ))
@@ -87,15 +90,20 @@ function App() {
                 projects.personalProjects.map((project) => {
                   return(
                     <div key={project.name} className="Horizontal-div">
-                      <div style={{width : "1.25%"}}></div>
-                      <div style={{width : "98.75%"}}>
+                      <div style={{width : "2%"}}></div>
+                      <div style={{width : "98%"}}>
                         <ExpandingButton header={project.name}>
-                          <div className="ProjectDescSection">{project.description}</div>
+                          <div className="ProjectDescSection">
+                            <div className="ProjectAreaTitle">Description</div>
+                            <div className="ProjectDescText">{project.description}</div>              
+                          </div>
+                          <hr className="ProjectSeparationLine"/>
                           <div className='ProjectLinksSection'>
+                            {project.relatedURLs && Object.keys(project.relatedURLs).length > 0 ? <div className="ProjectAreaTitle">Related URLs: </div> : null}
                             {
                               project.relatedURLs 
                                 ? Object.keys(project.relatedURLs).map((key, index) => (
-                                    <a className="ProjectLink" target="_blank" rel="noopener noreferrer" href={project.relatedURLs[key]} key={key}>
+                                    <a className="Link" target="_blank" rel="noopener noreferrer" href={project.relatedURLs[key]} key={key}>
                                       {key}
                                     </a>
                                   ))
@@ -112,7 +120,7 @@ function App() {
           </div>
           <div id="Contact" className="Navigable-window" >
             <div>Email: {contactInfo.email}</div>
-            <div>Github: <a href="https://github.com/F8Hardin">F8Hardin</a></div>
+            <div>Github: <a href="https://github.com/F8Hardin" className='Link'>F8Hardin</a></div>
           </div>
         </div>
       </div>
