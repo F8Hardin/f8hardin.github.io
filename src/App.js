@@ -1,8 +1,9 @@
 import './App.css';
 import RainbowDiv from './rainbowDiv';
-import ExpandingButton from './ExpandingButton/expandingButton';
+import ProjectExpandingButton from './ExpandingButton/ProjectExpandingButton';
 import content from "./content.json"
 import StarSystem from './Planets/index';
+import ModalLink from './ModalLink/modallink.js';
 
 function App() {
   const contactInfo = content.contactInfo;
@@ -53,74 +54,16 @@ function App() {
             ))}
           </div>
           <div id="Projects" className="Navigable-window" >
-            <ExpandingButton header={"Professional Projects"}  startExpanded = {true}>
-              {
-                projects.professionalProjects.map((project) => {
-                  return(
-                    <div key={project.name} className="Horizontal-div">
-                      <div style={{width : "2%"}}></div>
-                      <div style={{width : "98%"}}>
-                        <ExpandingButton header={project.name}>
-                          <div className="ProjectDescSection">
-                            <div className="ProjectAreaTitle">Description</div>
-                            <div className="ProjectDescText">{project.description}</div>              
-                          </div>
-                          <hr className="ProjectSeparationLine"/>
-                          <div className='ProjectLinksSection'>
-                            {project.relatedURLs && Object.keys(project.relatedURLs).length > 0 ? <div className='ProjectAreaTitle'>Related URLs: </div> : null}
-                            {
-                              project.relatedURLs 
-                                ? Object.keys(project.relatedURLs).map((key, index) => (
-                                    <a className="Link" target="_blank" rel="noopener noreferrer" href={project.relatedURLs[key]} key={key}>
-                                      {key}
-                                    </a>
-                                  ))
-                                : null
-                            }
-                          </div>
-                        </ExpandingButton>
-                      </div>
-                    </div>
-                  )
-                })
-              }
-            </ExpandingButton>
-            <ExpandingButton header={"Personal Projects"} startExpanded = {true}>
-              {
-                projects.personalProjects.map((project) => {
-                  return(
-                    <div key={project.name} className="Horizontal-div">
-                      <div style={{width : "2%"}}></div>
-                      <div style={{width : "98%"}}>
-                        <ExpandingButton header={project.name}>
-                          <div className="ProjectDescSection">
-                            <div className="ProjectAreaTitle">Description</div>
-                            <div className="ProjectDescText">{project.description}</div>              
-                          </div>
-                          <hr className="ProjectSeparationLine"/>
-                          <div className='ProjectLinksSection'>
-                            {project.relatedURLs && Object.keys(project.relatedURLs).length > 0 ? <div className="ProjectAreaTitle">Related URLs: </div> : null}
-                            {
-                              project.relatedURLs 
-                                ? Object.keys(project.relatedURLs).map((key, index) => (
-                                    <a className="Link" target="_blank" rel="noopener noreferrer" href={project.relatedURLs[key]} key={key}>
-                                      {key}
-                                    </a>
-                                  ))
-                                : null
-                            }
-                          </div>
-                        </ExpandingButton>
-                      </div>
-                    </div>
-                  )
-                })
-              }
-            </ExpandingButton>
+            <ProjectExpandingButton header={"Professional Projects"} projectList={projects.professionalProjects}/>
+            <ProjectExpandingButton header={"Personal Projects"} projectList={projects.personalProjects}/>
           </div>
           <div id="Contact" className="Navigable-window" >
-            <div>Email: {contactInfo.email}</div>
-            <div>Github: <a href="https://github.com/F8Hardin" className='Link'>F8Hardin</a></div>
+            <ModalLink
+              linkText="Email"
+              modalContent={<div>Email functionality coming soon.</div>}
+            />
+            <a href="https://github.com/F8Hardin" className='Link'>Github</a>
+            <a href="https://www.linkedin.com/in/fate-hardin-53038b192/" className='Link'>LinkedIn</a>
           </div>
         </div>
       </div>

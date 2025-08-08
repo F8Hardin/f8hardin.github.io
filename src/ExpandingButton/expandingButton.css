@@ -20,6 +20,16 @@
     box-sizing: border-box;
 }
 
+.expand-icon-open {
+    height: 80%;
+    border: 3px solid white;
+    box-sizing: border-box;
+}
+
+.expand-icon-open:hover {
+    border: 2px solid white;
+}
+
 .expand-icon:hover {
     border: 2px solid white;
 }

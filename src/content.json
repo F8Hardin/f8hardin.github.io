@@ -17,12 +17,19 @@
                 "name" : "Video To Notes Workflow",
                 "description" : "This project involved building a react front end messaging system that allowed a user to send a public youtube playlist URL to the backend and receive back notes about the videos in the playlist.",
                 "stack" : "LM Studio with LLama 3.1, React JS, Socket IO, Whisper C++, FFMPEG",
+                "relatedURLs" : {
+                    "LinkedIn Post" : "https://www.linkedin.com/feed/update/urn:li:activity:7334321072432947201/"
+                },
                 "images" : []
             },
             {
                 "name" : "Hand to Mouse Controls",
                 "description" : "More details coming soon.",
                 "stack" : "Python, OpenCV, MediaPipe, Tensorflow, PyAutoGUI",
+                "relatedURLs" : {
+                    "Kaggle Notebook" : "https://www.kaggle.com/code/fatehardin/hand-pose-recognition",
+                    "Github" : "https://github.com/F8Hardin/Hand-Mouse-Controls"
+                },
                 "images" : []
             },
             {
