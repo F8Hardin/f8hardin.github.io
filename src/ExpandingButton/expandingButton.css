@@ -36,7 +36,6 @@
 
 .expanding-div {
     width: 100%;
-    background-color: black;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

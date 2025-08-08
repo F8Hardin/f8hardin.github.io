@@ -1,4 +1,3 @@
-import './expandingButton.css'
 import ExpandingButton from "./expandingButton"
 
 export default function ProjectExpandingButton({header, children, startExpanded = false, projectList}) {
@@ -17,20 +16,50 @@ export default function ProjectExpandingButton({header, children, startExpanded 
                             <div className="ProjectDescText">{project.description}</div>              
                             </div>
                             {
-                            project.relatedURLs && Object.keys(project.relatedURLs).length > 0 && (
-                                <>
-                                <hr className="ProjectSeparationLine"/>
-                                <div className='ProjectLinksSection'>
-                                <div className="ProjectAreaTitle">Related URLs: </div>
-                                    {Object.keys(project.relatedURLs).map((key, index) => (
-                                        <a className="Link" target="_blank" rel="noopener noreferrer" href={project.relatedURLs[key]} key={key}>
-                                        {key}
-                                        </a>
-                                    ))
-                                    }
-                                </div>
-                                </>
-                            )
+                                project.images && Object.keys(project.images).length > 0 && (
+                                    <>
+                                        <hr className="ProjectSeparationLine"/>
+                                        <div className='ProjectImageSection'>
+                                            {
+                                                Object.keys(project.images).map((key, index) => (
+                                                        <div key={key}>
+                                                            <img className="ProjectImage" src={project.images[key]}/>
+                                                            <div>{key}</div>
+                                                        </div>
+                                                ))
+                                            }
+                                        </div>
+                                    </>
+                                )
+                            }
+                            <hr className="ProjectSeparationLine"/>
+                            <div className="ProjectStack">
+                                <div className="ProjectAreaTitle">Tech Stack: </div>
+                                {
+                                    <>
+                                        {
+                                            project.stack.map((tech) => (
+                                                <div key={tech}>{tech}</div>
+                                            ))
+                                        }
+                                    </>
+                                }
+                            </div>
+                            {
+                                project.relatedURLs && Object.keys(project.relatedURLs).length > 0 && (
+                                    <>
+                                    <hr className="ProjectSeparationLine"/>
+                                    <div className='ProjectLinksSection'>
+                                        <div className="ProjectAreaTitle">Related URLs: </div>
+                                        {Object.keys(project.relatedURLs).map((key, index) => (
+                                            <a className="Link" target="_blank" rel="noopener noreferrer" href={project.relatedURLs[key]} key={key}>
+                                            {key}
+                                            </a>
+                                        ))
+                                        }
+                                    </div>
+                                    </>
+                                )
                             }
                         </ExpandingButton>
                         </div>
