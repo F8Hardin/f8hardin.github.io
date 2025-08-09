@@ -38,7 +38,7 @@
         "professionalProjects": [
             {
                 "name": "Magic Leap Omniverse AR Plugin",
-                "description": "This project involved developing a custom extension for NVidia Omniverse. This extension enabled world building with the use of the Magic Leap AR Headset, allowing the user to build and view 3D assets in the HMD via remote rendering.",
+                "description": "This project involved developing a custom extension for NVidia Omniverse. This extension enabled world building with the use of the Magic Leap AR Headset, allowing the user to build and view 3D assets in the HMD via remote rendering. This involved understanding linear algebra in order for objects to be manipulated properly in 3D space around the AR user.",
                 "stack": ["NVidia Omniverse", "Python", "MagicLeap 2"],
                 "relatedURLs": {
                     "Magic Leap Documentation": "https://developer-docs.magicleap.cloud/docs/guides/remote-rendering/Applications/Omniverse/omniverse-setup/"
