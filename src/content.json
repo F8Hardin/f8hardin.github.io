@@ -44,20 +44,25 @@
                     "Magic Leap Documentation": "https://developer-docs.magicleap.cloud/docs/guides/remote-rendering/Applications/Omniverse/omniverse-setup/"
                 },
                 "images": {
-                    "XR User Interface": "/images/mlmenu.png",
                     "Starting XR": "/images/mlstart.png",
                     "Cube Example": "/images/cubeExample.png"
                 }
             },
             {
                 "name": "Ultimate Medical Academy: Bias In Recruiting",
-                "description": "The \"UMA : Bias In Recruiting\" VR application provided users with an empathetic first person shooter experience. Each player chose a character with a certain bias placed upon them. This bias would give the player an advantage or weakness during gameplay. My work on this project involved working with the AWS gamelift servers for multiplayer, as well as working with C++ and Blueprint actors for in game functionality.",
-                "stack": ["Unreal Engine 4", "Meta Quest", "AWS Gamelift", "AWS Cognito"]
+                "description": "The \"UMA : Bias In Recruiting\" VR application provided users with an empathetic first person shooter experience. Each player chose a character with a certain bias placed upon them. This bias would give the player an advantage or weakness during gameplay. The goal of this project was to help users overcome internal bias during the hiring process. My work on this project involved working with the AWS gamelift servers for multiplayer, as well as working with C++ and Blueprint actors for in game functionality.",
+                "stack": ["Unreal Engine 4", "Meta Quest", "AWS Gamelift", "AWS Cognito"],
+                "relatedURLs": {
+                    "Related News Article": "https://www.bizjournals.com/tampabay/inno/stories/profiles/2022/05/24/clearwater-company-uses-vr-hiring-bias.html"
+                },
+                "images": {
+                    "Bow Weapon POV": "/images/uma.png"
+                }
             },
             {
                 "name": "DOD Experience",
-                "description": "I worked closely with the Lead Engineer on a project designing for the Department Of Defense. This project provided a spatial computing ecosystem for a variety of DOD usecases.",
-                "stack": ["React JS", "Unreal Engine 5", "AWS EC2", "HTC XR Elite"],
+                "description": "I worked closely with the Lead Engineer on a project designed for the Department Of Defense. This project provided a spatial computing ecosystem for a variety of DOD usecases.",
+                "stack": ["React JS", "Unreal Engine 5", "AWS EC2", "CloudXR", "HTC XR Elite"],
                 "relatedURLs": {
                     "Related News Article": "https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/brightline-interactive-enters-into-a-4-million-contract-with-a-dep-862785"
                 }
