@@ -6,7 +6,6 @@ import StarSystem from './Planets/index';
 import ModalLink from './ModalLink/modallink.js';
 
 function App() {
-  const contactInfo = content.contactInfo;
   const projects = content.projects;
   const aboutMe = content.aboutMe;
   const intro = content.intro;
