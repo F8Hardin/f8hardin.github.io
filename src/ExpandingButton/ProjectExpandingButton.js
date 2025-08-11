@@ -23,7 +23,7 @@ export default function ProjectExpandingButton({header, startExpanded = false, p
                                             {
                                                 Object.keys(project.images).map((key, index) => (
                                                         <div key={key}>
-                                                            <img className="ProjectImage" src={project.images[key]} alt="Image failed to load."/>
+                                                            <img className="ProjectImage" src={project.images[key]} alt="failed to load."/>
                                                             <div>{key}</div>
                                                         </div>
                                                 ))
