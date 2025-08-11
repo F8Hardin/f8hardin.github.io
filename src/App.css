@@ -234,6 +234,18 @@
   max-height: 300px;
 }
 
+.ProjectVideoSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.ProjectVideo {
+  width: 100%;
+  height: auto;
+}
+
 .ProjectImageSection {
   display: flex;
   flex-direction: row;

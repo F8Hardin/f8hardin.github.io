@@ -68,9 +68,12 @@
                 }
             },
             {
-                 "name": "IVXHealth Adverse Reactions Simulation (Unreal Engine)",
+                "name": "IVXHealth Adverse Reactions Simulation (Unreal Engine)",
                 "description": "The IVX Health VR application was built to train employees at the IVX Health facility. This simulation focused performing procedures properly for the giving of intravanous medicine. My work on this project included developing the user interfaces and inventory system, as well as creating additional C++ and Blueprint actors for users to interact with while completing the simulation.",
-                "stack": ["Unreal Engine 4", "Meta Quest"]
+                "stack": ["Unreal Engine 4", "Meta Quest"],
+                "videos": {
+                    "Showcase" : "/videos/IVXDemo.mp4"
+                }
             }
         ]
     }

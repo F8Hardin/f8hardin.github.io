@@ -46,6 +46,25 @@ export default function ProjectExpandingButton({header, startExpanded = false, p
                                 }
                             </div>
                             {
+                                project.videos && Object.keys(project.videos).length > 0 && (
+                                    <>
+                                        <hr className="ProjectSeparationLine"/>
+                                        <div className='ProjectVideoSection'>
+                                            {
+                                                Object.keys(project.videos).map((key, index) => (
+                                                        <div key={key}>
+                                                            <video loop autoPlay muted className="ProjectVideo">
+                                                                <source src={project.videos[key]} type="video/mp4" />
+                                                            </video>
+                                                            <div>{key}</div>
+                                                        </div>
+                                                ))
+                                            }
+                                        </div>
+                                    </>
+                                )
+                            }
+                            {
                                 project.relatedURLs && Object.keys(project.relatedURLs).length > 0 && (
                                     <>
                                     <hr className="ProjectSeparationLine"/>
