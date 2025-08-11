@@ -54,8 +54,8 @@ function App() {
             ))}
           </div>
           <div id="Projects" className="Navigable-window" >
-            <ProjectExpandingButton header={"Professional Projects"} projectList={projects.professionalProjects}/>
-            <ProjectExpandingButton header={"Personal Projects"} projectList={projects.personalProjects}/>
+            <ProjectExpandingButton header={"Professional Projects"} projectList={projects.professionalProjects} startExpanded={true}/>
+            <ProjectExpandingButton header={"Personal Projects"} projectList={projects.personalProjects} startExpanded={true}/>
           </div>
           <div id="Contact" className="Navigable-window" >
             <ModalLink

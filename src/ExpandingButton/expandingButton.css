@@ -12,6 +12,8 @@
     border: 2px solid black;
     gap: 10px;
     font-size: max(1.25vh, 15px);
+    white-space: nowrap;
+    overflow-x: scroll;
 }
 
 .expand-icon {

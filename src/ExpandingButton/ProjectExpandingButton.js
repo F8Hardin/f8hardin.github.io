@@ -1,9 +1,9 @@
 import ExpandingButton from "./expandingButton"
 
-export default function ProjectExpandingButton({header, children, startExpanded = false, projectList}) {
+export default function ProjectExpandingButton({header, startExpanded = false, projectList}) {
     return (
         <>
-            <ExpandingButton header={header}>
+            <ExpandingButton header={header} startExpanded={startExpanded}>
                 {
                 projectList.map((project) => {
                     return(
