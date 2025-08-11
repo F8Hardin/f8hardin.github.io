@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/static/css/main.02a5ab8e.css",
-    "main.js": "/static/js/main.a73c8ff4.js",
+    "main.js": "/static/js/main.d1bcb670.js",
     "static/js/453.ad7768ec.chunk.js": "/static/js/453.ad7768ec.chunk.js",
     "static/media/HussarBoldWeb-bf92.woff": "/static/media/HussarBoldWeb-bf92.faaad004d3fec9f6b77c.woff",
     "static/media/AnkhSanctuary-PVK0B.ttf": "/static/media/AnkhSanctuary-PVK0B.14b8d3aaa658b8f9ff7a.ttf",
     "static/media/favicon.ico": "/static/media/favicon.4bc3270a1aa544a6edde.ico",
     "index.html": "/index.html",
     "main.02a5ab8e.css.map": "/static/css/main.02a5ab8e.css.map",
-    "main.a73c8ff4.js.map": "/static/js/main.a73c8ff4.js.map",
+    "main.d1bcb670.js.map": "/static/js/main.d1bcb670.js.map",
     "453.ad7768ec.chunk.js.map": "/static/js/453.ad7768ec.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.02a5ab8e.css",
-    "static/js/main.a73c8ff4.js"
+    "static/js/main.d1bcb670.js"
   ]
 }
