@@ -2,8 +2,8 @@ import './App.css';
 import RainbowDiv from './rainbowDiv';
 import ProjectExpandingButton from './ExpandingButton/ProjectExpandingButton';
 import content from "./content.json"
-import StarSystem from './Planets/index';
 import ModalLink from './ModalLink/modallink.js';
+import GravSystem from './GravSim/index.js';
 
 function App() {
   const projects = content.projects;
@@ -41,7 +41,7 @@ function App() {
       <div className='App-background-window'>
         <div className="Introduction-section">
           <div className='Intro-text'>{intro}</div>
-          <div className="Planet-model"><StarSystem/></div>
+          <div className="Planet-model"><GravSystem/></div>
         </div>
         <div className="Navigation-section">
           <div id="AboutMe" className="Navigable-window" >

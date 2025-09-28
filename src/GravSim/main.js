@@ -1,0 +1,394 @@
+import * as THREE from 'three';
+import PhysicsBody, { AUModifer } from './Bodies/physicsBody.js'
+import Star from './Bodies/star.js'
+import { randFloat, randInt } from 'three/src/math/MathUtils.js';
+import OctTree from './OctTree.js';
+
+let scene, camera, renderer, pivot, sun, earth, physBodies = []; export let maxSpawnRange = 8; export let bounceEffect = 1;
+let scrollModifier = .5; let gravConstant = 1; export let bodyCount = 100; export let showTrails = true; let trailLengths = 250;
+let spinCamera = false; let lastX = 0; let lastY = 0; let rotateModifier = .01; let cameraScroll = 1500; //maxSpawnRange * AUModifer * 30 * 1.5;
+let massMin = 1;
+let massMax = 100;
+let sphereSize = 10;
+let animationLoop = octTreeAnimateRedraw; export let maxDepth = 3; let rootRange = 1.5 * maxSpawnRange * AUModifer; let maxBodyCount = 3;
+let frameRate = 0;
+let clock = new THREE.Clock();
+export let speedModifier = .5;
+
+let frameCount = 0;
+let updateOctTreeEveryFrames = 1;
+
+export let octTree = null;
+let treeVisibility = false;
+
+let containerEl = null;
+let resizeObs = null;
+
+function getContainerSize() {
+  const w = containerEl?.clientWidth ?? window.innerWidth;
+  const h = containerEl?.clientHeight ?? window.innerHeight;
+  return [Math.max(1, w), Math.max(1, h)];
+}
+
+export function init(container) {
+  cleanUp();
+  containerEl = container;
+  scene = new THREE.Scene();
+  scene.fog = null;
+  camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 100000 );
+  camera.position.z = cameraScroll;
+
+  pivot = new THREE.Group();
+
+  //sun = new Star({mass: 100, position : [20, 0, 0], showTrail: showTrails, geometry : new THREE.SphereGeometry(2, 32, 16), pointLight : new THREE.PointLight("#f2df07", 1000, 0, 1),  material : new THREE.MeshStandardMaterial({color : "#f2df07"}), ambientLight : new THREE.AmbientLight(0xffffff, 1)});
+  sun = new Star({ root: pivot, mass: randFloat(massMin, massMax), bounceEffect: bounceEffect, trailColor: "#f2df07", showTrail: showTrails, position : [0, 0, 0], geometry : new THREE.SphereGeometry(sphereSize, 32, 16), material : new THREE.MeshStandardMaterial({color : "#f2df07"}), ambientLight : new THREE.AmbientLight(0xffffff, 1)});
+  physBodies.push(sun);
+
+
+  // earth = new PhysicsBody({ root: pivot, mass: 3.003 * 1e-6, bounceEffect: bounceEffect, trailColor: "#4287f5", showTrail: showTrails, trailLength: trailLengths, position: [1, 0, 0], geometry: new THREE.SphereGeometry(1, 32, 16), material: new THREE.MeshStandardMaterial({ color: "#4287f5" }) })
+  // physBodies.push(earth);
+  
+  for (let i = 0; i < bodyCount; i++) {
+    let color = new THREE.Color( 0xffffff );
+    color.setHex( Math.random() * 0xffffff );
+    physBodies.push(new PhysicsBody({ root: pivot, mass: randFloat(massMin, massMax), bounceEffect: bounceEffect, trailColor: color, showTrail: showTrails, trailLength: trailLengths, position: [randFloat(-maxSpawnRange, maxSpawnRange), randFloat(-maxSpawnRange, maxSpawnRange), randFloat(-maxSpawnRange, maxSpawnRange)], geometry: new THREE.SphereGeometry(sphereSize, 32, 16), material: new THREE.MeshStandardMaterial({ color: color }) }));
+  }
+
+  for (let b of physBodies) {
+    pivot.add(b);
+  }
+  scene.add(pivot);
+
+
+  let [w, h] = getContainerSize();
+  renderer = new THREE.WebGLRenderer();
+  renderer.setSize( w, h );
+  container.appendChild(renderer.domElement);
+  switch ( animationLoop ) {
+    case octTreeAnimateRedraw:
+      octTree = new OctTree({visibleTree: treeVisibility, physBodies: physBodies, maxBodyCount: maxBodyCount, maxDepth: maxDepth, rootRange: 1.5 * maxSpawnRange * AUModifer, scene: pivot});
+  }
+  renderer.setAnimationLoop( animationLoop );
+  //document.body.appendChild( renderer.domElement );
+  resize();
+}
+
+function resetAcceleration() {
+  for (let body of physBodies) { //reset acceleration
+    body.acceleration[0] = 0;
+    body.acceleration[1] = 0;
+    body.acceleration[2] = 0;
+  }
+}
+
+function animate() {
+  let clockDelta = clock.getDelta();
+  let timeSinceLastFrame = Math.min(clockDelta, 1/30);
+  frameRate = 1 / clockDelta;
+
+  resetAcceleration();
+
+  for (let i = 0; i < physBodies.length; i++) {
+    let body1 = physBodies[i]
+    for (let j = i + 1; j < physBodies.length; j++) {
+      let body2 = physBodies[j];
+      checkCollisionAndGravity(body1, body2);
+    }
+  }
+
+  for (let b of physBodies){
+    b.updatePhysics(timeSinceLastFrame * speedModifier);
+  }
+
+  camera.position.copy(sun.position).add(new THREE.Vector3(0, 0, cameraScroll));
+  renderer.render( scene, camera );
+}
+
+function octTreeAnimateRedraw() { //redraws tree every x frames
+  let clockDelta = clock.getDelta();
+  let timeSinceLastFrame = Math.min(clockDelta, 1/30);
+  frameRate = 1 / clockDelta;
+  frameCount += 1;
+
+  resetAcceleration();
+  if (updateOctTreeEveryFrames == frameCount){
+    frameCount = 0;
+    octTree.buildTree(octTree.rootNode, [sun.position.x, sun.position.y, sun.position.z]);
+  }
+  traverseOctTree(octTree.rootNode);
+
+  for (let b of physBodies){
+    b.updatePhysics(timeSinceLastFrame * speedModifier);
+  }
+
+  camera.position.copy(sun.position).add(new THREE.Vector3(0, 0, cameraScroll));
+  renderer.render( scene, camera );
+}
+
+function octTreeAnimateStatic(){ //static tree and updated bodies in nodes
+  let clockDelta = clock.getDelta();
+  let timeSinceLastFrame = Math.min(clockDelta, 1/30);
+  frameRate = 1 / clockDelta;
+  frameCount += 1;
+  resetAcceleration();
+
+  //new logic here
+
+  camera.position.copy(sun.position).add(new THREE.Vector3(0, 0, cameraScroll));
+  renderer.render( scene, camera );
+}
+
+function traverseOctTree(currentNode, nodeRemainingBodies = [], allNodesThisLevel = []){ //review for duplicates
+  //compare current nodes bodies to its own bodies
+  for (let j = 0; j < currentNode.physBodies.length; j++){
+    let body1 = currentNode.physBodies[j];
+    for (let k = j + 1; k < currentNode.physBodies.length; k++){
+      let body2 = currentNode.physBodies[k];
+      checkCollisionAndGravity(body1, body2);
+    }
+  }
+
+  if (nodeRemainingBodies.length > 0){ //compare parents remaining with children
+    for (let j = 0; j < nodeRemainingBodies.length; j++){
+      let body1 = nodeRemainingBodies[j];
+      for (let k = 0; k < currentNode.physBodies.length; k++){
+        let body2 = currentNode.physBodies[k];
+        checkCollisionAndGravity(body1, body2);
+      }
+    }
+  }
+
+  //traverse any children
+  let newNodeRemainingBodies = nodeRemainingBodies.length ? nodeRemainingBodies.concat(currentNode.physBodies) : currentNode.physBodies.slice();
+  for (let i = 0; i < currentNode.children.length; i++){
+    traverseOctTree(currentNode.children[i], newNodeRemainingBodies, currentNode.children);
+  }
+
+  //compare to current nodes bodies neighboring nodes bodies
+  if (allNodesThisLevel.length > 0){
+    let currentNodeIndex = allNodesThisLevel.indexOf(currentNode);
+
+    if (currentNodeIndex != -1){
+      for (let i = currentNodeIndex + 1; i < allNodesThisLevel.length; i++){
+        for (let j = 0; j < allNodesThisLevel[i].physBodies.length; j++){
+          let body1 = allNodesThisLevel[i].physBodies[j];
+          for (let k = 0; k < currentNode.physBodies.length; k++){
+            let body2 = currentNode.physBodies[k];
+            checkCollisionAndGravity(body1, body2);
+          }
+        }
+      }
+    }
+  }
+}
+
+function checkCollisionAndGravity(body1, body2) {
+  let dx = body2.physPos[0] - body1.physPos[0];
+  let dy = body2.physPos[1] - body1.physPos[1];
+  let dz = body2.physPos[2] - body1.physPos[2];
+
+  let distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+  distance = Math.max(distance, body1.radius + body2.radius);
+
+  let body1AccelerationX = gravConstant * (dx / (distance ** 3)) * body2.mass;
+  let body1AccelerationY = gravConstant * (dy / (distance ** 3)) * body2.mass;
+  let body1AccelerationZ = gravConstant * (dz / (distance ** 3)) * body2.mass;
+
+  body1.acceleration[0] += body1AccelerationX;
+  body1.acceleration[1] += body1AccelerationY;
+  body1.acceleration[2] += body1AccelerationZ;
+
+  let body2AccelerationX = -gravConstant * (dx / (distance ** 3)) * body1.mass;
+  let body2AccelerationY = -gravConstant * (dy / (distance ** 3)) * body1.mass;
+  let body2AccelerationZ = -gravConstant * (dz / (distance ** 3)) * body1.mass;
+  body2.acceleration[0] += body2AccelerationX;
+  body2.acceleration[1] += body2AccelerationY;
+  body2.acceleration[2] += body2AccelerationZ;
+
+  body1.checkCollision(body2);
+}
+
+function resize() {
+  if (!renderer || !camera) return;
+
+  const w = Math.max(1, containerEl?.clientWidth ?? window.innerWidth);
+  const h = Math.max(1, containerEl?.clientHeight ?? window.innerHeight);
+
+  // Match device pixel ratio (cap it if you want perf)
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  renderer.setPixelRatio(dpr);
+
+  // IMPORTANT: updateStyle = true so CSS size matches drawing buffer
+  renderer.setSize(w, h, true);
+
+  // Use the canvas’ displayed size for aspect
+  const canvas = renderer.domElement;
+  const cw = Math.max(1, canvas.clientWidth);
+  const ch = Math.max(1, canvas.clientHeight);
+
+  if ('aspect' in camera) { // PerspectiveCamera
+    camera.aspect = cw / ch;
+    camera.updateProjectionMatrix();
+  } else if ('isOrthographicCamera' in camera && camera.isOrthographicCamera) {
+    // If you ever swap to Ortho:
+    const frustumHeight = camera.top - camera.bottom;
+    const aspect = cw / ch;
+    const frustumWidth = frustumHeight * aspect;
+    const cx = (camera.left + camera.right) * 0.5;
+    const cy = (camera.top + camera.bottom) * 0.5;
+    camera.left   = cx - frustumWidth / 2;
+    camera.right  = cx + frustumWidth / 2;
+    camera.updateProjectionMatrix();
+  }
+}
+
+
+// window.addEventListener('wheel', (e) => {
+//   let scrollY = e.deltaY * scrollModifier;
+//   cameraScroll += scrollY;
+// });
+
+window.addEventListener('mousedown', (e) => { spinCamera = true; lastX = e.clientX; lastY = e.clientY});
+window.addEventListener('mouseup', (e) => { spinCamera = false;});
+
+window.addEventListener('mousemove', (e) => {
+  if (spinCamera) {
+    let deltaX = lastX - e.clientX;
+    let deltaY = lastY - e.clientY;
+
+    lastX = e.clientX;
+    lastY = e.clientY;
+
+    if (pivot){
+      pivot.rotation.y += (deltaX * rotateModifier);
+      pivot.rotation.z += (deltaY * rotateModifier);
+    }
+
+    //camera.lookAt(sun);
+  }
+});
+
+window.addEventListener('keydown', (e) => {
+  if (e.key.toLowerCase() === 'r'){
+    if (pivot)
+      pivot.rotation.set(0, 0, 0);
+  } else if (e.key.toLowerCase() === 's'){
+    init(containerEl);
+  }
+});
+
+function removeAllEventsAndObservers() {
+  try { resizeObs?.disconnect(); } catch {}
+  resizeObs = null;
+  // other listeners (mousedown/mousemove/keydown) were added to window;
+  // removing them is handled by cleanUp() via losing the canvas; but you can keep references and remove if you prefer.
+}
+
+function cleanUp() {
+  removeAllEventsAndObservers();
+
+  if (renderer) {
+    renderer.setAnimationLoop(null);
+    renderer.dispose();
+    renderer.domElement?.parentElement?.removeChild(renderer.domElement);
+    const gl = renderer.getContext?.();
+    gl?.getExtension("WEBGL_lose_context")?.loseContext?.();
+  }
+
+  if (scene) {
+    scene.traverse(obj => {
+      obj.geometry?.dispose?.();
+      if (obj.material) {
+        if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose?.());
+        else obj.material.dispose?.();
+      }
+    });
+  }
+
+  scene = camera = renderer = pivot = sun = null;
+  physBodies = [];
+  containerEl = null;
+}
+
+export function getFramerate(){
+  return frameRate.toPrecision(3);
+}
+
+export function setBodyCount(newCount){
+  bodyCount = newCount;
+}
+
+export function setShowTrail(showValue){
+  showTrails = showValue;
+  for (let b of physBodies){
+    b.setShowTrail(showValue);
+  }
+}
+
+export function setSpawnRange(rangeValue) {
+  maxSpawnRange = rangeValue;
+}
+
+export function setBounceEffect(bounceValue) {
+  bounceEffect = bounceValue;
+  for (let b of physBodies){
+    b.setBounceEffect(bounceValue);
+  }
+}
+
+export function swapAnimationLoop(selected){
+  switch (selected) {
+    case "octTreeRedraw":
+      animationLoop = octTreeAnimateRedraw;
+      break;
+    case "bruteForce":
+      animationLoop = animate;
+      break;
+    case "octTreeStatic":
+      animationLoop = octTreeAnimateRedraw; //for now
+      break;
+  }
+}
+
+export function toggleDrawOctTree(){
+  octTree.visibleTree = !octTree.visibleTree;
+  treeVisibility = octTree.visibleTree;
+  return octTree.visibleTree;
+}
+
+export function setTrailLength(newLength){
+  for (let b of physBodies){
+    b.trailLength = newLength;
+  }
+}
+
+export function setSpeedModifier(newValue){
+  speedModifier = newValue;
+}
+
+export function setMaxDepth(newValue){
+  maxDepth = newValue;
+  octTree.maxDepth = maxDepth;
+}
+
+export function mount(node) {
+  // React will call with node (mount) and later with null (unmount)
+  if (node) {
+    // If we haven't created a renderer yet, initialize now
+    if (!renderer) {
+      init(node);
+      return;
+    }
+    // If renderer exists but isn't attached to this node, attach it
+    if (renderer.domElement && renderer.domElement.parentNode !== node) {
+      node.appendChild(renderer.domElement);
+    }
+    // Make sure size matches the container
+    resize();
+  } else {
+    // Unmount path — only clean up if we actually created things
+    if (renderer || scene) cleanUp();
+  }
+}
+window.addEventListener( 'resize', resize );
+//init();

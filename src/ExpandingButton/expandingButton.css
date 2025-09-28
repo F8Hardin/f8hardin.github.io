@@ -48,3 +48,8 @@
     display: flex;
     flex-direction: column;
 }
+
+.ProjectDescText {
+  white-space: pre-line;
+  word-wrap: break-word;
+}
