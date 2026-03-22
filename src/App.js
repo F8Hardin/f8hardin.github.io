@@ -56,7 +56,7 @@ function App() {
           <div id="Projects" className="Navigable-window" >
             <ProjectExpandingButton header={"Professional Projects"} projectList={projects.professionalProjects} startExpanded={true}/>
             <ProjectExpandingButton header={"Personal Projects"} projectList={projects.personalProjects} startExpanded={true}/>
-            <ExpandingButton header={"Resumes"} startExpanded={true}>
+            <ExpandingButton header={"Resumes"}>
               <div className="Horizontal-div">
                 <div style={{width: "2%"}}></div>
                 <div style={{width: "98%"}}>
