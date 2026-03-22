@@ -1,6 +1,7 @@
 import './App.css';
 import RainbowDiv from './rainbowDiv';
 import ProjectExpandingButton from './ExpandingButton/ProjectExpandingButton';
+import ExpandingButton from './ExpandingButton/expandingButton';
 import content from "./content.json"
 import ModalLink from './ModalLink/modallink.js';
 import GravSystem from './GravSim/index.js';
@@ -55,6 +56,27 @@ function App() {
           <div id="Projects" className="Navigable-window" >
             <ProjectExpandingButton header={"Professional Projects"} projectList={projects.professionalProjects} startExpanded={true}/>
             <ProjectExpandingButton header={"Personal Projects"} projectList={projects.personalProjects} startExpanded={true}/>
+            <ExpandingButton header={"Resumes"} startExpanded={true}>
+              <div className="Horizontal-div">
+                <div style={{width: "2%"}}></div>
+                <div style={{width: "98%"}}>
+                  <ExpandingButton header={"Full Stack Resume"}>
+                    <iframe
+                      src="/resumes/fullstack.pdf"
+                      title="Full Stack Resume"
+                      style={{ width: '100%', height: '80vh', border: 'none' }}
+                    />
+                  </ExpandingButton>
+                  <ExpandingButton header={"Game Dev Resume"}>
+                    <iframe
+                      src="/resumes/gamedev.pdf"
+                      title="Game Dev Resume"
+                      style={{ width: '100%', height: '80vh', border: 'none' }}
+                    />
+                  </ExpandingButton>
+                </div>
+              </div>
+            </ExpandingButton>
           </div>
           <div id="Contact" className="Navigable-window" >
             <ModalLink
