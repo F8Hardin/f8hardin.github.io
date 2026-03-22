@@ -11,7 +11,10 @@
             {
                 "name": "Gravity And Collision Simulation",
                 "description": "A browser-based sandbox that spawns N bodies and visualizes their gravitational motion under Newtonian gravity. It currently includes a naïve O(n²) integrator and an experimental octree partition for future acceleration work. You can watch paths/orbits and tweak simulation parameters; body spawning via UI and full Barnes–Hut aggregation are on the roadmap. \n\n See a demonstration at the top of the page - click 'r' to recenter, 's' to restart",
-                "stack": ["three.js", "Octtree Data Structure", "node.js"]
+                "stack": ["three.js", "Octtree Data Structure", "node.js"],
+                "relatedURLs": {
+                    "Click here to view the current demo": "https://f8hardin.github.io/Simple-Gravity-Simulation-Three-JS/"
+                }
             },
             {
                 "name": "Video To Notes Workflow",
