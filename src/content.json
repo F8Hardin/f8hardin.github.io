@@ -4,6 +4,14 @@
     "projects": {
         "personalProjects": [
             {
+                "name": "Claude Artifacts Gallery",
+                "description": "I built a full stack web gallery to publish and share the interactive, educational artifacts I create with Claude. The site is a Next.js application backed by Supabase for Postgres storage, authentication, and file storage, with GitHub OAuth for sign in. Each artifact is a self-contained interactive page - things like a quantum computing primer, a reinforcement learning reference, and a live in-browser blockchain miner - that visitors can open, explore, and download. I deployed it on Vercel with custom domain support. In the future I would like to expand the search and tagging system and continue adding artifacts that cover math, physics, and machine learning topics.",
+                "stack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "Vercel", "Claude (Anthropic)"],
+                "relatedURLs": {
+                    "Click here to view the live gallery": "https://claude-artifacts-mu.vercel.app/"
+                }
+            },
+            {
                 "name": "Email AI Assistant",
                 "description": "I built an electron application that uses a LangChain agent with OpenAI and custom defined tools to interact with my personal email. With this application, the agent can read my emails, classify them, summarize them, as well as find important information from the available emails. In the future, I would improve the functionality by integrating a vector database for email storage and retrieval, as well as support for many users.",
                 "stack": ["OpenAI", "Langchain", "Electron JS", "Socket IO"]
