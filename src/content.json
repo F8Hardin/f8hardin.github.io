@@ -4,6 +4,11 @@
     "projects": {
         "personalProjects": [
             {
+                "name": "Eva - Local AI Agent With Persistent Memory",
+                "description": "I built Eva, a locally hosted AI agent that runs on my own hardware and keeps a persistent memory across sessions. It's a LangGraph agent served behind a FastAPI backend, with a React chat interface and a CLI for direct access. Memory is split across three systems: an Obsidian vault for durable knowledge, PostgreSQL with pgvector for episodic memory searchable by meaning and time, and a key/value store for exact values like credentials. I wrote custom MCP servers so the agent can access my desktop and interact with the Robinhood API. It also runs a stream-of-consciousness loop where it explores on its own between conversations and saves what it finds. In the future I would like to expand the vault linking for better automatic retrieval and add more tools beyond my local network.",
+                "stack": ["Python", "LangGraph", "LangChain", "FastAPI", "PostgreSQL / pgvector", "MCP", "React", "TypeScript", "Vite", "Tailwind CSS"]
+            },
+            {
                 "name": "Claude Artifacts Gallery",
                 "description": "I built a full stack web gallery to publish and share the interactive, educational artifacts I create with Claude. The site is a Next.js application backed by Supabase for Postgres storage, authentication, and file storage, with GitHub OAuth for sign in. Each artifact is a self-contained interactive page - things like a quantum computing primer, a reinforcement learning reference, and a live in-browser blockchain miner - that visitors can open, explore, and download. I deployed it on Vercel with custom domain support. In the future I would like to expand the search and tagging system and continue adding artifacts that cover math, physics, and machine learning topics.",
                 "stack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "Vercel", "Claude (Anthropic)"],
